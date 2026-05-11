@@ -1,19 +1,3 @@
-<!DOCTYPE html>
-<html lang="tr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Esas Web | Gelecek Burada</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
-🛠️ 3. Adım: src/Navbar.tsx (Kırmızı Hataları Bitir)
-Az önceki loglarda Navbar dosyan hata veriyordu. İçini tamamen boşalt ve bu hatasız kodu yapıştır:
-
-TypeScript
 import React from 'react';
 
 const Navbar = () => {
