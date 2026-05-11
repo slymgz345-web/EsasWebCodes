@@ -1,35 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-@import "tailwindcss";
+import React from 'react';
 
-@theme {
-  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  
-  --color-cyan-custom: #22d3ee; /* cyan-400 equivalent */
-  --color-blue-custom: #3b82f6; /* blue-500 equivalent */
-  --color-purple-custom: #9333ea; /* purple-600 equivalent */
-  --color-dark-bg: #050608;
-  --color-dark-border: #0d0f14;
-  --color-zinc-custom: #18181b; /* zinc-900 equivalent */
-}
+const Navbar = () => {
+  return (
+    <nav className="fixed w-full z-50 bg-black/50 backdrop-blur-md border-b border-blue-500/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex-shrink-0">
+            <span className="text-blue-500 font-bold text-xl tracking-wider">ESAS WEB</span>
+          </div>
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-8">
+              <a href="#" className="text-gray-300 hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">Ana Sayfa</a>
+              <a href="#" className="text-gray-300 hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">Hizmetler</a>
+              <a href="#" className="text-gray-300 hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">İletişim</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
-@layer base {
-  body {
-    @apply bg-dark-bg text-slate-200 font-sans selection:bg-cyan-custom/30 overflow-x-hidden;
-    margin: 0;
-  }
-}
-
-@layer utilities {
-  .glass {
-    @apply bg-white/[0.02] backdrop-blur-md border border-white/10;
-  }
-  
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-custom via-blue-custom to-purple-custom;
-  }
-
-  .label-mono {
-    @apply font-mono text-[10px] uppercase tracking-[0.3em];
-  }
-}
+export default Navbar;
