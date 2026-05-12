@@ -140,4 +140,51 @@ function ApproachSection() {
 
 function ExpertiseSection() {
   return (
-    <section className="container mx-auto px-6 py-24 border-t
+    <section className="container mx-auto px-6 py-24 border-t border-white/5">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="lg:col-span-5">
+          <span className="label-mono text-slate-500 text-[10px] tracking-[0.3em] mb-4 block">UZMANLIK HİZMETLERİ</span>
+          <h2 className="text-6xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter mb-8">
+            YÜKSEK- <br />PERFORMANS <br /><span className="text-gradient">ÇÖZÜMLERİ</span>.
+          </h2>
+          <div className="flex gap-4">
+            {[Layout, Search, ShieldCheck].map((Icon, i) => (
+              <div key={i} className="w-14 h-14 bg-white/[0.02] border border-white/10 rounded-xl flex items-center justify-center text-slate-500 hover:text-cyan-400 transition-all cursor-pointer group">
+                <Icon size={20} className="group-hover:scale-110 transition-transform" />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="lg:col-span-7 space-y-4">
+          <ServiceRow icon={<Layout size={22} />} title="Kullanıcı Odaklı Tasarım" desc="Müşteriye dönüşen, estetik ve işlevsel arayüzler." />
+          <ServiceRow icon={<Search size={22} />} title="SEO Stratejileri" desc="Arama motorlarında zirveyi hedefleyen teknik optimizasyon." />
+          <ServiceRow icon={<ShieldCheck size={22} />} title="Modern Web Geliştirme" desc="En yeni teknolojilerle zırhlandırılmış altyapılar." />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MethodCard({ icon, title, desc }: any) {
+  return (
+    <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex flex-col md:flex-row md:items-center gap-8 group hover:bg-white/[0.04] transition-all">
+      <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">{icon}</div>
+      <div>
+        <h4 className="text-lg font-bold uppercase mb-2">{title}</h4>
+        <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
+      </div>
+    </motion.div>
+  );
+}
+
+function ServiceRow({ icon, title, desc }: any) {
+  return (
+    <motion.div whileHover={{ x: 10 }} className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex items-start gap-8 group cursor-default">
+      <div className="w-14 h-14 bg-cyan-400/10 rounded-xl flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black transition-all duration-500">{icon}</div>
+      <div>
+        <h4 className="text-xl font-bold uppercase mb-2 group-hover:text-cyan-400 transition-colors">{title}</h4>
+        <p className="text-slate-500 text-sm max-w-md">{desc}</p>
+      </div>
+    </motion.div>
+  );
+}
