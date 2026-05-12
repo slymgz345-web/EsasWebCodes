@@ -143,7 +143,7 @@ function ApproachSection() {
             </div>
             <h3 className="text-2xl font-bold uppercase mb-4 tracking-tight">KALİTELİ ÇÖZÜMLER</h3>
             <p className="text-slate-400 text-sm leading-relaxed font-light italic">
-              TEKNOFEST birincisi bir disiplinle, her satır kodda %100 güvenliğe odaklanıyorum.
+              Security-by-Design' prensibiyle en gelişmiş dijital zırhlara kavuşturuyoruz.
             </p>
           </motion.div>
         </div>
