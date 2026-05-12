@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-export default function Contact() {
+export default function App() {
   return (
     <section id="contact" className="py-24">
       <div className="container mx-auto px-6 max-w-4xl">
