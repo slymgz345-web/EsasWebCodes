@@ -1,16 +1,20 @@
 import { motion } from 'framer-motion';
-import { Layout, Search, ShieldCheck, Zap, ShieldAlert, Network, Cpu } from 'lucide-react';
+import { 
+  Layout, Search, ShieldCheck, Zap, 
+  ShieldAlert, Network, Cpu, MousePointer2, 
+  Send 
+} from 'lucide-react';
 
-// --- ANA BİLEŞEN (PATRON) ---
+// --- ANA BİLEŞEN (ORCHESTRATOR) ---
 export default function App() {
   return (
-    <main className="min-h-screen bg-[#050608] text-white selection:bg-cyan-500/30 font-sans">
+    <main className="min-h-screen bg-[#050608] text-white selection:bg-cyan-500/30 font-sans overflow-x-hidden">
       
       {/* 1. BÖLÜM: HERO & SERVICES (BENTO GRID) */}
       <section className="container mx-auto px-6 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
-          {/* Sol Büyük Kart */}
+          {/* Sol Büyük Kart: Vizyon */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -34,7 +38,7 @@ export default function App() {
             </div>
           </motion.div>
 
-          {/* Sağ Kolon: Küçük Kartlar */}
+          {/* Sağ Kolon: Durum ve Özet Kartları */}
           <div className="lg:col-span-5 grid grid-rows-2 gap-6">
             <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 relative overflow-hidden">
                <span className="label-mono text-[10px] text-slate-500 block mb-6 uppercase">Hizmet Durumu</span>
@@ -49,7 +53,9 @@ export default function App() {
             </div>
             <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex flex-col justify-end">
               <h3 className="font-bold text-xl uppercase mb-2">Estetik Tasarım</h3>
-              <p className="text-slate-400 text-sm">Kullanıcı deneyimi ve görsel mükemmellik odaklı çözümler.</p>
+              <p className="text-slate-400 text-sm leading-relaxed">
+                Kullanıcı deneyimi ve görsel mükemmellik odaklı, AI Studio derinliğinde çözümler.
+              </p>
             </div>
           </div>
         </div>
@@ -58,83 +64,80 @@ export default function App() {
       {/* 2. BÖLÜM: ÇALIŞMA METODOLOJİSİ */}
       <ApproachSection />
 
+      {/* 3. BÖLÜM: UZMANLIK HİZMETLERİ */}
+      <ExpertiseSection />
+
+      {/* 4. BÖLÜM: İLETİŞİM (FINAL BOSS) */}
+      <section id="contact" className="container mx-auto px-6 py-24 border-t border-white/5">
+        <div className="bg-white/[0.02] border border-white/10 rounded-[3rem] p-8 md:p-20 relative overflow-hidden">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div>
+              <h3 className="label-mono text-slate-500 mb-6 uppercase tracking-widest text-xs">İletişime Geçin</h3>
+              <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-8 leading-none">
+                PROJENİZİ <br />
+                <span className="text-gradient">ZIRHLAYALIM</span>.
+              </h2>
+              <p className="text-slate-400 text-lg">
+                Fikirlerinizi gerçeğe dönüştürmek için terminalin başındayım. 
+                Mesajınızı bırakın, sistemlerimizi senkronize edelim.
+              </p>
+            </div>
+            
+            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid md:grid-cols-2 gap-6">
+                <input type="text" placeholder="ADINIZ" className="form-input" />
+                <input type="email" placeholder="E-POSTA" className="form-input" />
+              </div>
+              <textarea rows={4} placeholder="MESAJINIZ" className="form-input"></textarea>
+              <button className="w-full bg-white text-black font-black py-5 rounded-2xl hover:bg-cyan-400 transition-all duration-500 uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 group">
+                SİNYALİ GÖNDER <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer className="py-10 text-center text-slate-600 text-[10px] font-mono uppercase tracking-[0.5em]">
+        © 2026 ESASWEB // SİBER GÜVENLİK VE MODERN WEB
+      </footer>
+
     </main>
   );
 }
 
-// --- ALT BİLEŞEN: ÇALIŞMA METODOLOJİSİ (Burada "export default" yok!) ---
+// --- ALT BİLEŞENLER (HELPERS) ---
+
 function ApproachSection() {
   return (
     <section className="container mx-auto px-6 py-24 border-t border-white/5">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
-        {/* SOL KOLON */}
         <div className="lg:col-span-5 space-y-12">
           <div>
-            <span className="label-mono text-slate-500 text-[10px] tracking-[0.3em] uppercase mb-4 block">
-              ÇALIŞMA METODOLOJİM
-            </span>
+            <span className="label-mono text-slate-500 text-[10px] tracking-[0.3em] uppercase mb-4 block">ÇALIŞMA METODOLOJİM</span>
             <h2 className="text-6xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter">
-              PROFESYONEL <br />
-              <span className="text-gradient">STANDARTLAR</span>.
+              PROFESYONEL <br /><span className="text-gradient">STANDARTLAR</span>.
             </h2>
           </div>
-
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12 relative group"
-          >
+          <motion.div whileHover={{ y: -5 }} className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12">
             <div className="w-14 h-14 bg-cyan-400/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-8">
               <ShieldAlert size={28} />
             </div>
-            <h3 className="text-2xl font-bold uppercase mb-4 tracking-tight">
-              KALİTELİ VE HIZLI ÇÖZÜMLER
-            </h3>
+            <h3 className="text-2xl font-bold uppercase mb-4">KALİTELİ VE HIZLI ÇÖZÜMLER</h3>
             <p className="text-slate-400 leading-relaxed text-sm">
-              Her projeye butik bir yaklaşımla yaklaşıyorum. Sadece bir web sitesi değil, markanızı yansıtan dijital bir kimlik inşa ediyoruz.
+              Siber vatan disipliniyle, her projeye butik ve güvenli bir yaklaşımla yaklaşıyorum.
             </p>
           </motion.div>
         </div>
-
-        {/* SAĞ KOLON */}
         <div className="lg:col-span-7 space-y-6">
-          <MethodCard 
-            icon={<Network size={24} />}
-            title="HIZ VE PERFORMANS"
-            desc="Dünya standartlarında, global erişime sahip ve ışık hızında açılan web siteleri."
-          />
-          <MethodCard 
-            icon={<ShieldCheck size={24} />}
-            title="KALİTE GARANTİSİ"
-            desc="Geleceğe hazır, hatasız kod yapısı ve modern tasarım standartları."
-          />
-          <MethodCard 
-            icon={<Cpu size={24} />}
-            title="ESNEK ALTYAPI"
-            desc="İşletmenizin büyümesine uyum sağlayan, modüler ve geliştirilebilir mimariler."
-          />
+          <MethodCard icon={<Network size={24} />} title="HIZ VE PERFORMANS" desc="Işık hızında açılan, global erişime sahip dijital yapılar." />
+          <MethodCard icon={<ShieldCheck size={24} />} title="KALİTE GARANTİSİ" desc="Hatasız kod yapısı ve modern tasarımın mükemmel uyumu." />
+          <MethodCard icon={<Cpu size={24} />} title="ESNEK ALTYAPI" desc="Gelecekteki büyümeye şimdiden hazır modüler mimariler." />
         </div>
       </div>
     </section>
   );
 }
 
-// --- YARDIMCI BİLEŞEN: KARTLAR ---
-function MethodCard({ icon, title, desc }: { icon: any, title: string, desc: string }) {
+function ExpertiseSection() {
   return (
-    <motion.div 
-      initial={{ opacity: 0, x: 20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex flex-col md:flex-row md:items-center gap-8 group hover:bg-white/[0.04] transition-all"
-    >
-      <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
-        {icon}
-      </div>
-      <div className="flex-1">
-        <h4 className="text-lg font-bold uppercase tracking-tight mb-2">{title}</h4>
-        <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
-      </div>
-    </motion.div>
-  );
-}
+    <section className="container mx-auto px-6 py-24 border-t
