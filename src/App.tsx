@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Layout, Search, ShieldCheck, Zap } from 'lucide-react';
+import { Layout, Search, ShieldCheck, Zap, ShieldAlert, Network, Cpu } from 'lucide-react';
 
 export default function App() {
   return (
