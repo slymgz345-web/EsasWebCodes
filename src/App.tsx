@@ -7,37 +7,53 @@ import {
 // --- NAVBAR: DENGELİ VE ŞIK ---
 function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-[#050608]/80 backdrop-blur-xl border-b border-white/5">
-      <div className="container mx-auto px-6 h-20 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-[#050608]/85 backdrop-blur-xl border-b border-white/5">
+      <div className="container mx-auto px-6 h-24 flex justify-between items-center">
         
-        {/* LOGO: Görünür ama Dev Değil (h-14) */}
+        {/* LOGO BÖLÜMÜ - "Süper Zoom" Modu */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3 group cursor-pointer"
         >
-          <div className="relative h-14 w-auto flex items-center">
+          {/* Logo Konteynırı */}
+          <div className="relative h-12 w-48 flex items-center justify-start overflow-visible">
             <img 
               src="/logo.png" 
               alt="EsasWeb Logo" 
-              className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-110"
+              className="h-full w-auto object-contain scale-[3.2] origin-left transition-transform duration-500 group-hover:scale-[3.5]"
             />
-            <div className="absolute inset-0 bg-cyan-400 blur-2xl opacity-10 group-hover:opacity-30 transition-opacity" />
+            
+            {/* Logo arkasındaki siber aura (Işıltıyı da genişlettik) */}
+            <div className="absolute -inset-10 bg-cyan-400 blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity pointer-events-none" />
           </div>
         </motion.div>
 
         {/* MENÜ BAĞLANTILARI */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {['BAŞLANGIÇ', 'HİZMETLER', 'YAKLAŞIMIM'].map((item) => (
             <a 
               key={item} 
               href={`#${item.toLowerCase()}`} 
-              className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-white transition-colors"
+              className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors"
             >
               {item}
             </a>
           ))}
         </div>
+
+        {/* GÜVENLİ BAĞLANTI BUTONU */}
+        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+          <button className="bg-white/5 border border-white/10 px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-cyan-400 hover:text-black transition-all duration-500 flex items-center gap-3 group text-white">
+            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse group-hover:bg-black" />
+            GÜVENLİ BAĞLANTI
+          </button>
+        </motion.div>
+
+      </div>
+    </nav>
+  );
+}
 
         {/* GÜVENLİ BAĞLANTI BUTONU */}
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
