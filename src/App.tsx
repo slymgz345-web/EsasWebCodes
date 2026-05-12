@@ -1,20 +1,65 @@
 import { motion } from 'framer-motion';
 import { 
   Layout, Search, ShieldCheck, Zap, 
-  ShieldAlert, Network, Cpu, MousePointer2, 
-  Send 
+  ShieldAlert, Network, Cpu, Send 
 } from 'lucide-react';
 
-// --- ANA BİLEŞEN (ORCHESTRATOR) ---
+// --- NAVBAR & LOGO BİLEŞENİ ---
+function Navbar() {
+  return (
+    <nav className="fixed top-0 left-0 w-full z-50 bg-[#050608]/80 backdrop-blur-xl border-b border-white/5">
+      <div className="container mx-auto px-6 h-20 flex justify-between items-center">
+        
+        {/* LOGO BÖLÜMÜ */}
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex items-center gap-3 group cursor-pointer"
+        >
+          <div className="relative h-10 w-auto">
+            <img 
+              src="/logo.png" 
+              alt="EsasWeb Logo" 
+              className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-cyan-400 blur-2xl opacity-10 group-hover:opacity-30 transition-opacity" />
+          </div>
+        </motion.div>
+
+        {/* MENÜ */}
+        <div className="hidden md:flex items-center gap-8">
+          {['Başlangıç', 'Hizmetler', 'Yaklaşımım'].map((item) => (
+            <a 
+              key={item} 
+              href={`#${item.toLowerCase()}`} 
+              className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+
+        {/* SAĞ TARAF: GÜVENLİ BAĞLANTI */}
+        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+          <button className="bg-white/5 border border-white/10 px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-cyan-400 hover:text-black hover:border-cyan-400 transition-all duration-500 flex items-center gap-2 group text-white">
+            <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse group-hover:bg-black" />
+            GÜVENLİ BAĞLANTI
+          </button>
+        </motion.div>
+      </div>
+    </nav>
+  );
+}
+
+// --- ANA APP BİLEŞENİ ---
 export default function App() {
   return (
-    <main className="min-h-screen bg-[#050608] text-white selection:bg-cyan-500/30 font-sans overflow-x-hidden">
-      
-      {/* 1. BÖLÜM: HERO & SERVICES (BENTO GRID) */}
+    <main className="min-h-screen bg-[#050608] text-white selection:bg-cyan-500/30 font-sans overflow-x-hidden pt-20">
+      <Navbar />
+
+      {/* 1. BÖLÜM: HERO & SERVICES */}
       <section className="container mx-auto px-6 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
-          {/* Sol Büyük Kart: Vizyon */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -33,12 +78,11 @@ export default function App() {
               </p>
               <div className="flex gap-4 mt-10">
                 <button className="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-cyan-400 transition-all uppercase text-xs tracking-widest">Hizmetlerim</button>
-                <button className="bg-white/5 border border-white/10 px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-all uppercase text-xs tracking-widest">Hemen Başla</button>
+                <button className="bg-white/5 border border-white/10 px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-all uppercase text-xs tracking-widest text-white">Hemen Başla</button>
               </div>
             </div>
           </motion.div>
 
-          {/* Sağ Kolon: Durum ve Özet Kartları */}
           <div className="lg:col-span-5 grid grid-rows-2 gap-6">
             <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 relative overflow-hidden">
                <span className="label-mono text-[10px] text-slate-500 block mb-6 uppercase">Hizmet Durumu</span>
@@ -53,9 +97,7 @@ export default function App() {
             </div>
             <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex flex-col justify-end">
               <h3 className="font-bold text-xl uppercase mb-2">Estetik Tasarım</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Kullanıcı deneyimi ve görsel mükemmellik odaklı, AI Studio derinliğinde çözümler.
-              </p>
+              <p className="text-slate-400 text-sm leading-relaxed">Kullanıcı deneyimi ve görsel mükemmellik odaklı çözümler.</p>
             </div>
           </div>
         </div>
@@ -67,7 +109,7 @@ export default function App() {
       {/* 3. BÖLÜM: UZMANLIK HİZMETLERİ */}
       <ExpertiseSection />
 
-      {/* 4. BÖLÜM: İLETİŞİM (FINAL BOSS) */}
+      {/* 4. BÖLÜM: İLETİŞİM */}
       <section id="contact" className="container mx-auto px-6 py-24 border-t border-white/5">
         <div className="bg-white/[0.02] border border-white/10 rounded-[3rem] p-8 md:p-20 relative overflow-hidden">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20">
@@ -77,10 +119,6 @@ export default function App() {
                 PROJENİZİ <br />
                 <span className="text-gradient">ZIRHLAYALIM</span>.
               </h2>
-              <p className="text-slate-400 text-lg">
-                Fikirlerinizi gerçeğe dönüştürmek için terminalin başındayım. 
-                Mesajınızı bırakın, sistemlerimizi senkronize edelim.
-              </p>
             </div>
             
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
@@ -100,12 +138,11 @@ export default function App() {
       <footer className="py-10 text-center text-slate-600 text-[10px] font-mono uppercase tracking-[0.5em]">
         © 2026 ESASWEB // SİBER GÜVENLİK VE MODERN WEB
       </footer>
-
     </main>
   );
 }
 
-// --- ALT BİLEŞENLER (HELPERS) ---
+// --- YARDIMCI BİLEŞENLER ---
 
 function ApproachSection() {
   return (
@@ -119,19 +156,15 @@ function ApproachSection() {
             </h2>
           </div>
           <motion.div whileHover={{ y: -5 }} className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12">
-            <div className="w-14 h-14 bg-cyan-400/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-8">
-              <ShieldAlert size={28} />
-            </div>
-            <h3 className="text-2xl font-bold uppercase mb-4">KALİTELİ VE HIZLI ÇÖZÜMLER</h3>
-            <p className="text-slate-400 leading-relaxed text-sm">
-              Siber vatan disipliniyle, her projeye butik ve güvenli bir yaklaşımla yaklaşıyorum.
-            </p>
+            <div className="w-14 h-14 bg-cyan-400/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-8"><ShieldAlert size={28} /></div>
+            <h3 className="text-2xl font-bold uppercase mb-4 tracking-tight">KALİTELİ VE HIZLI ÇÖZÜMLER</h3>
+            <p className="text-slate-400 text-sm leading-relaxed">Her projeye butik bir yaklaşımla yaklaşıyorum. Markanızı yansıtan dijital bir kimlik inşa ediyoruz.</p>
           </motion.div>
         </div>
         <div className="lg:col-span-7 space-y-6">
-          <MethodCard icon={<Network size={24} />} title="HIZ VE PERFORMANS" desc="Işık hızında açılan, global erişime sahip dijital yapılar." />
-          <MethodCard icon={<ShieldCheck size={24} />} title="KALİTE GARANTİSİ" desc="Hatasız kod yapısı ve modern tasarımın mükemmel uyumu." />
-          <MethodCard icon={<Cpu size={24} />} title="ESNEK ALTYAPI" desc="Gelecekteki büyümeye şimdiden hazır modüler mimariler." />
+          <MethodCard icon={<Network size={24} />} title="HIZ VE PERFORMANS" desc="Işık hızında açılan web siteleri." />
+          <MethodCard icon={<ShieldCheck size={24} />} title="KALİTE GARANTİSİ" desc="Hatasız kod yapısı ve modern tasarım." />
+          <MethodCard icon={<Cpu size={24} />} title="ESNEK ALTYAPI" desc="Geliştirilebilir ve modüler mimariler." />
         </div>
       </div>
     </section>
@@ -143,22 +176,18 @@ function ExpertiseSection() {
     <section className="container mx-auto px-6 py-24 border-t border-white/5">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         <div className="lg:col-span-5">
-          <span className="label-mono text-slate-500 text-[10px] tracking-[0.3em] mb-4 block">UZMANLIK HİZMETLERİ</span>
-          <h2 className="text-6xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter mb-8">
-            YÜKSEK- <br />PERFORMANS <br /><span className="text-gradient">ÇÖZÜMLERİ</span>.
-          </h2>
+          <span className="label-mono text-slate-500 text-[10px] tracking-[0.3em] uppercase mb-4 block">UZMANLIK HİZMETLERİ</span>
+          <h2 className="text-6xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter mb-8">YÜKSEK- <br />PERFORMANS <br /><span className="text-gradient">ÇÖZÜMLERİ</span>.</h2>
           <div className="flex gap-4">
             {[Layout, Search, ShieldCheck].map((Icon, i) => (
-              <div key={i} className="w-14 h-14 bg-white/[0.02] border border-white/10 rounded-xl flex items-center justify-center text-slate-500 hover:text-cyan-400 transition-all cursor-pointer group">
-                <Icon size={20} className="group-hover:scale-110 transition-transform" />
-              </div>
+              <div key={i} className="w-14 h-14 bg-white/[0.02] border border-white/10 rounded-xl flex items-center justify-center text-slate-500 hover:text-cyan-400 transition-all cursor-pointer group"><Icon size={20} /></div>
             ))}
           </div>
         </div>
         <div className="lg:col-span-7 space-y-4">
-          <ServiceRow icon={<Layout size={22} />} title="Kullanıcı Odaklı Tasarım" desc="Müşteriye dönüşen, estetik ve işlevsel arayüzler." />
-          <ServiceRow icon={<Search size={22} />} title="SEO Stratejileri" desc="Arama motorlarında zirveyi hedefleyen teknik optimizasyon." />
-          <ServiceRow icon={<ShieldCheck size={22} />} title="Modern Web Geliştirme" desc="En yeni teknolojilerle zırhlandırılmış altyapılar." />
+          <ServiceRow icon={<Layout size={22} />} title="Kullanıcı Odaklı Tasarım" desc="Estetik ve işlevsel arayüz mimarileri." />
+          <ServiceRow icon={<Search size={22} />} title="SEO Stratejileri" desc="Arama motorlarında üst sıralar için teknik optimizasyon." />
+          <ServiceRow icon={<ShieldCheck size={22} />} title="Modern Web Geliştirme" desc="En yeni teknolojilerle inşa edilmiş altyapılar." />
         </div>
       </div>
     </section>
@@ -167,24 +196,18 @@ function ExpertiseSection() {
 
 function MethodCard({ icon, title, desc }: any) {
   return (
-    <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex flex-col md:flex-row md:items-center gap-8 group hover:bg-white/[0.04] transition-all">
+    <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex items-center gap-8 group hover:bg-white/[0.04] transition-all">
       <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">{icon}</div>
-      <div>
-        <h4 className="text-lg font-bold uppercase mb-2">{title}</h4>
-        <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
-      </div>
+      <div><h4 className="font-bold uppercase tracking-tight mb-2">{title}</h4><p className="text-slate-500 text-sm">{desc}</p></div>
     </motion.div>
   );
 }
 
 function ServiceRow({ icon, title, desc }: any) {
   return (
-    <motion.div whileHover={{ x: 10 }} className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex items-start gap-8 group cursor-default">
+    <motion.div whileHover={{ x: 10 }} className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex items-start gap-8 group hover:bg-white/[0.04] transition-all cursor-default">
       <div className="w-14 h-14 bg-cyan-400/10 rounded-xl flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black transition-all duration-500">{icon}</div>
-      <div>
-        <h4 className="text-xl font-bold uppercase mb-2 group-hover:text-cyan-400 transition-colors">{title}</h4>
-        <p className="text-slate-500 text-sm max-w-md">{desc}</p>
-      </div>
+      <div><h4 className="text-xl font-bold uppercase tracking-tight mb-2 group-hover:text-cyan-400 transition-colors">{title}</h4><p className="text-slate-500 text-sm max-w-md">{desc}</p></div>
     </motion.div>
   );
 }
