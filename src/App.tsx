@@ -11,33 +11,30 @@ export default function App() {
               Hemen <br />
               <span className="text-gradient">Başlayalım</span>.
             </h2>
-            
+
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
               <div className="grid md:grid-cols-2 gap-6">
-                <input 
-                  type="text" 
-                  placeholder="ADINIZ" 
-                  className="w-full bg-black/40 border border-white/10 rounded-lg p-4 text-xs font-mono text-white focus:outline-none focus:border-cyan-custom transition-all placeholder:text-white/10"
+                <input
+                  type="text"
+                  placeholder="ADINIZ"
+                  className="w-full bg-black/40 border border-white/10 rounded-lg p-4 text-xs font-mono text-white focus:outline-none focus:border-cyan-400 transition-colors"
                 />
-                <input 
-                  type="email" 
-                  placeholder="E-POSTA ADRESİNİZ" 
-                  className="w-full bg-black/40 border border-white/10 rounded-lg p-4 text-xs font-mono text-white focus:outline-none focus:border-cyan-custom transition-all placeholder:text-white/10"
+                <input
+                  type="email"
+                  placeholder="E-POSTA ADRESİNİZ"
+                  className="w-full bg-black/40 border border-white/10 rounded-lg p-4 text-xs font-mono text-white focus:outline-none focus:border-cyan-400 transition-colors"
                 />
               </div>
-              <textarea 
-                rows={4} 
-                placeholder="MESAJINIZ" 
-                className="w-full bg-black/40 border border-white/10 rounded-lg p-4 text-xs font-mono text-white focus:outline-none focus:border-cyan-custom transition-all placeholder:text-white/10 resize-none"
+              <textarea
+                rows={4}
+                placeholder="MESAJINIZ"
+                className="w-full bg-black/40 border border-white/10 rounded-lg p-4 text-xs font-mono text-white focus:outline-none focus:border-cyan-400 transition-colors"
               ></textarea>
-              <button className="w-full bg-white text-dark-bg font-black text-xs py-4 rounded uppercase tracking-[0.2em] hover:bg-cyan-custom transition-all active:scale-95">
+              <button className="bg-white text-black font-bold py-4 px-10 rounded-full hover:bg-cyan-400 transition-all duration-300 tracking-widest text-xs">
                 MESAJI GÖNDER
               </button>
             </form>
           </div>
-
-          {/* Ambient glow in the corner of the form */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-custom/5 blur-[80px] -z-10 rounded-full" />
         </div>
       </div>
     </section>
