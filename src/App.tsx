@@ -1,15 +1,16 @@
 import { motion } from 'framer-motion';
 import { Layout, Search, ShieldCheck, Zap, ShieldAlert, Network, Cpu } from 'lucide-react';
 
+// --- ANA BİLEŞEN (PATRON) ---
 export default function App() {
   return (
     <main className="min-h-screen bg-[#050608] text-white selection:bg-cyan-500/30 font-sans">
       
-      {/* --- HERO & SERVICES SECTION (BENTO GRID) --- */}
+      {/* 1. BÖLÜM: HERO & SERVICES (BENTO GRID) */}
       <section className="container mx-auto px-6 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
-          {/* Sol Büyük Kart: Başlık */}
+          {/* Sol Büyük Kart */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -19,7 +20,7 @@ export default function App() {
               <Layout size={300} strokeWidth={0.5} />
             </div>
             <div className="relative z-10">
-              <span className="label-mono text-cyan-400 text-xs mb-4 block tracking-widest">MODERN WEB TASARIMCISI & STRATEJİST</span>
+              <span className="label-mono text-cyan-400 text-xs mb-4 block tracking-widest uppercase">MODERN WEB TASARIMCISI & STRATEJİST</span>
               <h1 className="text-6xl md:text-8xl font-black uppercase leading-[0.9] tracking-tighter mb-8">
                 HIZLI, MODERN <br /> VE <span className="text-gradient">ETKİLEYİCİ</span> <br /> WEB SİTELERİ.
               </h1>
@@ -35,8 +36,6 @@ export default function App() {
 
           {/* Sağ Kolon: Küçük Kartlar */}
           <div className="lg:col-span-5 grid grid-rows-2 gap-6">
-            
-            {/* Hizmet Durumu Kartı */}
             <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 relative overflow-hidden">
                <span className="label-mono text-[10px] text-slate-500 block mb-6 uppercase">Hizmet Durumu</span>
                <div className="flex items-center gap-3">
@@ -48,26 +47,28 @@ export default function App() {
                  <span className="text-8xl font-black uppercase">KALİTE</span>
                </div>
             </div>
-
-            {/* Estetik Tasarım Kartı */}
             <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex flex-col justify-end">
               <h3 className="font-bold text-xl uppercase mb-2">Estetik Tasarım</h3>
               <p className="text-slate-400 text-sm">Kullanıcı deneyimi ve görsel mükemmellik odaklı çözümler.</p>
             </div>
-
           </div>
         </div>
       </section>
 
-      import { motion } from 'framer-motion';
-import { ShieldAlert, Network, ShieldCheck, Cpu } from 'lucide-react';
+      {/* 2. BÖLÜM: ÇALIŞMA METODOLOJİSİ */}
+      <ApproachSection />
 
-export default function ApproachSection() {
+    </main>
+  );
+}
+
+// --- ALT BİLEŞEN: ÇALIŞMA METODOLOJİSİ (Burada "export default" yok!) ---
+function ApproachSection() {
   return (
     <section className="container mx-auto px-6 py-24 border-t border-white/5">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
-        {/* SOL KOLON: Başlık ve Büyük Kart */}
+        {/* SOL KOLON */}
         <div className="lg:col-span-5 space-y-12">
           <div>
             <span className="label-mono text-slate-500 text-[10px] tracking-[0.3em] uppercase mb-4 block">
@@ -79,7 +80,6 @@ export default function ApproachSection() {
             </h2>
           </div>
 
-          {/* Sol Büyük Kart */}
           <motion.div 
             whileHover={{ y: -5 }}
             className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12 relative group"
@@ -96,33 +96,30 @@ export default function ApproachSection() {
           </motion.div>
         </div>
 
-        {/* SAĞ KOLON: Üçlü Liste Kartları */}
+        {/* SAĞ KOLON */}
         <div className="lg:col-span-7 space-y-6">
-          
           <MethodCard 
             icon={<Network size={24} />}
             title="HIZ VE PERFORMANS"
             desc="Dünya standartlarında, global erişime sahip ve ışık hızında açılan web siteleri."
           />
-
           <MethodCard 
             icon={<ShieldCheck size={24} />}
             title="KALİTE GARANTİSİ"
             desc="Geleceğe hazır, hatasız kod yapısı ve modern tasarım standartları."
           />
-
           <MethodCard 
             icon={<Cpu size={24} />}
             title="ESNEK ALTYAPI"
             desc="İşletmenizin büyümesine uyum sağlayan, modüler ve geliştirilebilir mimariler."
           />
-
         </div>
       </div>
     </section>
   );
 }
 
+// --- YARDIMCI BİLEŞEN: KARTLAR ---
 function MethodCard({ icon, title, desc }: { icon: any, title: string, desc: string }) {
   return (
     <motion.div 
@@ -139,32 +136,5 @@ function MethodCard({ icon, title, desc }: { icon: any, title: string, desc: str
         <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
       </div>
     </motion.div>
-  );
-}
-
-      {/* --- SERVICES LIST (ICON CARDS) --- */}
-      <section className="container mx-auto px-6 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <ServiceCard icon={<Layout size={20} />} title="KULLANICI ODAKLI TASARIM" desc="Ziyaretçilerinizi müşteriye dönüştüren, estetik ve işlevsel arayüz mimarileri." />
-          <ServiceCard icon={<Search size={20} />} title="SEO STRATEJİLERİ" desc="Arama motorlarında üst sıralarda yer almanız için teknik optimizasyon ve içerik stratejisi." />
-          <ServiceCard icon={<ShieldCheck size={20} />} title="MODERN WEB GELİŞTİRME" desc="En yeni teknolojilerle inşa edilmiş, hızlı ve tüm cihazlarla uyumlu altyapılar." />
-        </div>
-      </section>
-
-      {/* Daha önce yaptığımız İletişim Formu buraya eklenebilir */}
-      
-    </main>
-  );
-}
-
-function ServiceCard({ icon, title, desc }: { icon: any, title: string, desc: string }) {
-  return (
-    <div className="bg-white/[0.01] border border-white/5 p-8 rounded-3xl hover:bg-white/[0.03] transition-all group">
-      <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
-        {icon}
-      </div>
-      <h4 className="font-bold text-lg mb-3 tracking-tight uppercase">{title}</h4>
-      <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
-    </div>
   );
 }
