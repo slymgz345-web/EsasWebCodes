@@ -4,46 +4,45 @@ import {
   ShieldAlert, Network, Cpu, Send 
 } from 'lucide-react';
 
-// --- NAVBAR & LOGO (Genişletilmiş Versiyon) ---
+// --- NAVBAR: DENGELİ VE ŞIK ---
 function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-[#050608]/90 backdrop-blur-3xl border-b border-white/5">
-      <div className="container mx-auto px-6 h-32 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-[#050608]/80 backdrop-blur-xl border-b border-white/5">
+      <div className="container mx-auto px-6 h-20 flex justify-between items-center">
         
-        {/* LOGO BÖLÜMÜ - h-32 (128px) olarak güncellendi */}
+        {/* LOGO: Görünür ama Dev Değil (h-14) */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3 group cursor-pointer"
         >
-          <div className="relative h-32 w-auto flex items-center">
+          <div className="relative h-14 w-auto flex items-center">
             <img 
               src="/logo.png" 
               alt="EsasWeb Logo" 
-              className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+              className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-110"
             />
-            {/* Logo arkasındaki siber aura */}
-            <div className="absolute inset-0 bg-cyan-400 blur-[80px] opacity-10 group-hover:opacity-40 transition-opacity scale-150" />
+            <div className="absolute inset-0 bg-cyan-400 blur-2xl opacity-10 group-hover:opacity-30 transition-opacity" />
           </div>
         </motion.div>
 
-        {/* NAV MENÜ */}
-        <div className="hidden md:flex items-center gap-12">
+        {/* MENÜ BAĞLANTILARI */}
+        <div className="hidden md:flex items-center gap-8">
           {['BAŞLANGIÇ', 'HİZMETLER', 'YAKLAŞIMIM'].map((item) => (
             <a 
               key={item} 
               href={`#${item.toLowerCase()}`} 
-              className="text-[10px] font-black tracking-[0.4em] text-slate-500 hover:text-cyan-400 transition-colors"
+              className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-white transition-colors"
             >
               {item}
             </a>
           ))}
         </div>
 
-        {/* SAĞ TARAF: GÜVENLİ BAĞLANTI */}
+        {/* GÜVENLİ BAĞLANTI BUTONU */}
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-          <button className="bg-white/5 border border-white/10 px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-cyan-400 hover:text-black hover:border-cyan-400 transition-all duration-500 flex items-center gap-3 group text-white">
-            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse group-hover:bg-black" />
+          <button className="bg-white/5 border border-white/10 px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2 group text-white">
+            <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse group-hover:bg-black" />
             GÜVENLİ BAĞLANTI
           </button>
         </motion.div>
@@ -55,128 +54,124 @@ function Navbar() {
 // --- ANA APP BİLEŞENİ ---
 export default function App() {
   return (
-    <main className="min-h-screen bg-[#050608] text-white selection:bg-cyan-500/30 font-sans overflow-x-hidden pt-32">
+    <main className="min-h-screen bg-[#050608] text-white selection:bg-cyan-500/30 font-sans overflow-x-hidden pt-20">
       <Navbar />
 
-      {/* 1. BÖLÜM: HERO & BENTO GRID */}
-      <section id="başlangiç" className="container mx-auto px-6 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      {/* 1. BÖLÜM: HERO & BENTO GRID (Restored Sizes) */}
+      <section id="başlangiç" className="container mx-auto px-6 py-16 md:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-7 bg-white/[0.02] border border-white/10 rounded-[3rem] p-14 flex flex-col justify-end min-h-[600px] relative overflow-hidden group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="lg:col-span-7 bg-white/[0.02] border border-white/10 rounded-3xl p-10 flex flex-col justify-end min-h-[500px] relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity">
-              <Layout size={450} strokeWidth={0.5} />
+              <Layout size={300} strokeWidth={0.5} />
             </div>
             <div className="relative z-10">
-              <span className="label-mono text-cyan-400 text-[11px] mb-6 block tracking-[0.5em] uppercase font-bold">MODERN WEB TASARIMCISI & STRATEJİST</span>
-              <h1 className="text-7xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter mb-12">
+              <span className="label-mono text-cyan-400 text-[10px] mb-4 block tracking-[0.3em] uppercase">MODERN WEB TASARIMCISI & STRATEJİST</span>
+              <h1 className="text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter mb-8">
                 HIZLI, MODERN <br /> VE <span className="text-gradient">ETKİLEYİCİ</span> <br /> WEB SİTELERİ.
               </h1>
-              <p className="text-slate-400 max-w-lg text-xl leading-relaxed mb-12 font-light">
-                Dijital dünyadaki varlığınızı sadece inşa etmiyoruz; onu siber bir disiplinle zırhlandırıyoruz.
+              <p className="text-slate-400 max-w-md text-lg leading-relaxed mb-10">
+                İşletmenizi dijital dünyada öne çıkaran, en gelişmiş teknolojilerle zırhlandırılmış çözümler.
               </p>
-              <div className="flex gap-8">
-                <button className="bg-white text-black px-12 py-6 rounded-2xl font-black hover:bg-cyan-400 transition-all uppercase text-xs tracking-widest shadow-2xl">Hizmetlerim</button>
-                <button className="bg-white/5 border border-white/10 px-12 py-6 rounded-2xl font-black hover:bg-white/10 transition-all uppercase text-xs tracking-widest text-white">Hemen Başla</button>
+              <div className="flex gap-4">
+                <button className="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-cyan-400 transition-all uppercase text-xs tracking-widest">Hizmetlerim</button>
+                <button className="bg-white/5 border border-white/10 px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-all uppercase text-xs tracking-widest text-white">Hemen Başla</button>
               </div>
             </div>
           </motion.div>
 
-          <div className="lg:col-span-5 grid grid-rows-2 gap-8">
-            <div className="bg-white/[0.02] border border-white/10 rounded-[3rem] p-12 relative overflow-hidden">
-               <span className="label-mono text-[11px] text-slate-500 block mb-10 uppercase tracking-widest">Hizmet Durumu</span>
-               <div className="flex items-center gap-5">
-                 <div className="w-4 h-4 bg-cyan-400 rounded-full animate-pulse shadow-[0_0_20px_rgba(34,211,238,0.6)]" />
-                 <h3 className="font-bold text-3xl uppercase tracking-tight">Web Tasarım & Geliştirme</h3>
+          <div className="lg:col-span-5 grid grid-rows-2 gap-6">
+            <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 relative overflow-hidden">
+               <span className="label-mono text-[10px] text-slate-500 block mb-6 uppercase tracking-widest text-white/50">Hizmet Durumu</span>
+               <div className="flex items-center gap-3">
+                 <div className="w-2.5 h-2.5 bg-cyan-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
+                 <h3 className="font-bold text-xl uppercase tracking-tight">Web Tasarım & Geliştirme</h3>
                </div>
-               <p className="text-slate-500 text-xs mt-4 font-mono uppercase tracking-[0.4em]">Modern Mimari: Aktif</p>
-               <div className="mt-14 opacity-[0.03] select-none pointer-events-none">
-                 <span className="text-9xl font-black uppercase tracking-tighter">KALİTE</span>
+               <p className="text-slate-500 text-[10px] mt-2 font-mono uppercase tracking-[0.3em]">Modern Mimari: Aktif</p>
+               <div className="mt-8 opacity-[0.03] select-none pointer-events-none">
+                 <span className="text-8xl font-black uppercase tracking-tighter">KALİTE</span>
                </div>
             </div>
-            <div className="bg-white/[0.02] border border-white/10 rounded-[3rem] p-12 flex flex-col justify-end group hover:bg-white/[0.05] transition-all duration-500">
-              <h3 className="font-bold text-3xl uppercase mb-4 group-hover:text-cyan-400 transition-colors">Estetik Tasarım</h3>
-              <p className="text-slate-400 text-lg leading-relaxed font-light">Kullanıcı deneyimi ve görsel mükemmellik odaklı, siber standartlarda arayüzler.</p>
+            <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex flex-col justify-end group hover:bg-white/[0.04] transition-all">
+              <h3 className="font-bold text-xl uppercase mb-2 group-hover:text-cyan-400 transition-colors">Estetik Tasarım</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">Kullanıcı deneyimi ve görsel mükemmellik odaklı arayüzler.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* DİĞER BÖLÜMLER (Aynı şekilde devam eder) */}
+      {/* DİĞER BÖLÜMLER (Bento yapısına uygun ölçeklerde) */}
       <ApproachSection />
       <ExpertiseSection />
       <ContactSection />
 
-      <footer className="py-20 text-center text-slate-700 text-[11px] font-mono uppercase tracking-[1.2em] opacity-40">
-        © 2026 ESASWEB // DIGITAL ARMOR & MODERN WEB
+      <footer className="py-12 text-center text-slate-700 text-[9px] font-mono uppercase tracking-[0.8em] opacity-50">
+        © 2026 ESASWEB // SİBER GÜVENLİK VE MODERN WEB
       </footer>
     </main>
   );
 }
 
-// --- ALT BİLEŞENLER (TEMİZLENDİ) ---
+// --- ALT BİLEŞENLER (Dengeli Ölçekler) ---
 
 function ApproachSection() {
   return (
-    <section id="yaklaşimim" className="container mx-auto px-6 py-32 border-t border-white/5">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
-        <div className="lg:col-span-5 space-y-20">
+    <section id="yaklaşimim" className="container mx-auto px-6 py-20 border-t border-white/5">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="lg:col-span-5 space-y-12">
           <div>
-            <span className="label-mono text-slate-500 text-[11px] tracking-[0.5em] mb-6 block font-black uppercase">ÇALIŞMA METODOLOJİM</span>
-            <h2 className="text-8xl md:text-9xl font-black uppercase leading-[0.8] tracking-tighter">
+            <span className="label-mono text-slate-500 text-[10px] tracking-[0.3em] mb-4 block uppercase font-bold text-white/40">ÇALIŞMA METODOLOJİM</span>
+            <h2 className="text-5xl md:text-6xl font-black uppercase leading-[0.9] tracking-tighter">
               PROFESYONEL <br /><span className="text-gradient">STANDARTLAR</span>.
             </h2>
           </div>
-          <motion.div whileHover={{ y: -15 }} className="bg-white/[0.02] border border-white/10 rounded-[4rem] p-14 group transition-all duration-700">
-            <div className="w-20 h-20 bg-cyan-400/10 rounded-3xl flex items-center justify-center text-cyan-400 mb-12 group-hover:bg-cyan-400 group-hover:text-black transition-all">
-              <ShieldAlert size={40} />
+          <motion.div whileHover={{ y: -5 }} className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12">
+            <div className="w-14 h-14 bg-cyan-400/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-8">
+              <ShieldAlert size={28} />
             </div>
-            <h3 className="text-4xl font-bold uppercase mb-8 tracking-tight">KALİTELİ ÇÖZÜMLER</h3>
-            <p className="text-slate-400 text-lg leading-relaxed font-light italic">
-              "Siber Vatan" disipliniyle her satır kodda %100 güvenliğe odaklanıyorum.
-            </p>
+            <h3 className="text-2xl font-bold uppercase mb-4 tracking-tight">KALİTELİ ÇÖZÜMLER</h3>
+            <p className="text-slate-400 text-sm leading-relaxed font-light">Siber vatan disipliniyle, her satır kodda %100 güvenliğe odaklanıyorum.</p>
           </motion.div>
         </div>
-        <div className="lg:col-span-7 space-y-10">
-          <MethodCard icon={<Network size={32} />} title="HIZ VE PERFORMANS" desc="Global erişime sahip, ışık hızında açılan siber yapılar." />
-          <MethodCard icon={<ShieldCheck size={32} />} title="KALİTE GARANTİSİ" desc="Hatasız kod yapısı ve modern tasarımın milimetrik uyumu." />
-          <MethodCard icon={<Cpu size={32} />} title="ESNEK ALTYAPI" desc="Gelecekteki büyüme senaryolarına şimdiden hazır mimariler." />
+        <div className="lg:col-span-7 space-y-6">
+          <MethodCard icon={<Network size={24} />} title="HIZ VE PERFORMANS" desc="Global erişime sahip, ışık hızında açılan siber yapılar." />
+          <MethodCard icon={<ShieldCheck size={24} />} title="KALİTE GARANTİSİ" desc="Hatasız kod yapısı ve modern tasarımın milimetrik uyumu." />
+          <MethodCard icon={<Cpu size={24} />} title="ESNEK ALTYAPI" desc="Modüler ve geliştirilebilir mimariler." />
         </div>
       </div>
     </section>
   );
 }
 
-// Yardımcı bileşenlerin mantığı (MethodCard, ServiceRow) App V2 ile aynı kalarak boyutlar ölçeklendi.
 function MethodCard({ icon, title, desc }: any) {
   return (
-    <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white/[0.02] border border-white/10 rounded-[3rem] p-12 flex flex-col md:flex-row md:items-center gap-12 group hover:bg-white/[0.06] transition-all duration-700 border-l-8 border-l-transparent hover:border-l-cyan-400">
-      <div className="w-20 h-20 bg-white/5 rounded-2xl flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform duration-700">{icon}</div>
-      <div><h4 className="text-2xl font-black uppercase mb-4 tracking-widest">{title}</h4><p className="text-slate-500 text-lg font-light">{desc}</p></div>
+    <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex flex-col md:flex-row md:items-center gap-8 group hover:bg-white/[0.04] transition-all">
+      <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">{icon}</div>
+      <div><h4 className="text-lg font-bold uppercase mb-2 tracking-widest">{title}</h4><p className="text-slate-500 text-sm font-light">{desc}</p></div>
     </motion.div>
   );
 }
 
 function ExpertiseSection() {
   return (
-    <section id="hizmetler" className="container mx-auto px-6 py-32 border-t border-white/5">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
+    <section id="hizmetler" className="container mx-auto px-6 py-20 border-t border-white/5">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         <div className="lg:col-span-5">
-          <span className="label-mono text-slate-500 text-[11px] tracking-[0.5em] mb-8 block uppercase font-black">UZMANLIK HİZMETLERİ</span>
-          <h2 className="text-8xl md:text-9xl font-black uppercase leading-[0.8] tracking-tighter mb-12">YÜKSEK- <br />PERFORMANS <br /><span className="text-gradient">ÇÖZÜMLERİ</span>.</h2>
-          <div className="flex gap-6">
+          <span className="label-mono text-slate-500 text-[10px] tracking-[0.3em] mb-4 block uppercase font-black opacity-40">UZMANLIK HİZMETLERİ</span>
+          <h2 className="text-5xl md:text-6xl font-black uppercase leading-[0.9] tracking-tighter mb-8">YÜKSEK- <br />PERFORMANS <br /><span className="text-gradient">ÇÖZÜMLERİ</span>.</h2>
+          <div className="flex gap-4">
             {[Layout, Search, ShieldCheck].map((Icon, i) => (
-              <div key={i} className="w-20 h-20 bg-white/[0.02] border border-white/10 rounded-2xl flex items-center justify-center text-slate-500 hover:text-cyan-400 transition-all cursor-pointer group hover:border-cyan-400/50"><Icon size={28} className="group-hover:scale-125 transition-transform" /></div>
+              <div key={i} className="w-12 h-12 bg-white/[0.02] border border-white/10 rounded-xl flex items-center justify-center text-slate-500 hover:text-cyan-400 transition-all cursor-pointer group"><Icon size={20} className="group-hover:scale-110 transition-transform" /></div>
             ))}
           </div>
         </div>
-        <div className="lg:col-span-7 space-y-8">
-          <ServiceRow icon={<Layout size={30} />} title="Kullanıcı Odaklı Tasarım" desc="Müşteriye dönüşen, estetik ve işlevsel siber arayüzler." />
-          <ServiceRow icon={<Search size={30} />} title="SEO Stratejileri" desc="Teknik optimizasyon ve içerik stratejisi ile zirveyi hedefleyin." />
-          <ServiceRow icon={<ShieldCheck size={30} />} title="Modern Web Geliştirme" desc="En yeni teknolojilerle zırhlandırılmış siber altyapılar." />
+        <div className="lg:col-span-7 space-y-4">
+          <ServiceRow icon={<Layout size={22} />} title="Kullanıcı Odaklı Tasarım" desc="Estetik ve işlevsel siber arayüzler." />
+          <ServiceRow icon={<Search size={22} />} title="SEO Stratejileri" desc="Teknik optimizasyon ile arama motorlarında zirve." />
+          <ServiceRow icon={<ShieldCheck size={22} />} title="Modern Web Geliştirme" desc="En yeni teknolojilerle zırhlandırılmış altyapılar." />
         </div>
       </div>
     </section>
@@ -185,29 +180,29 @@ function ExpertiseSection() {
 
 function ServiceRow({ icon, title, desc }: any) {
   return (
-    <motion.div whileHover={{ x: 20 }} className="bg-white/[0.02] border border-white/10 rounded-[3rem] p-12 flex items-start gap-12 group hover:bg-white/[0.06] transition-all duration-700 cursor-default">
-      <div className="w-20 h-20 bg-cyan-400/10 rounded-3xl flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black transition-all duration-1000 shadow-[0_0_30px_rgba(34,211,238,0.2)]">{icon}</div>
-      <div><h4 className="text-3xl font-black uppercase mb-4 group-hover:text-cyan-400 transition-colors">{title}</h4><p className="text-slate-500 text-lg leading-relaxed max-w-xl font-light">{desc}</p></div>
+    <motion.div whileHover={{ x: 10 }} className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex items-start gap-8 group hover:bg-white/[0.04] transition-all cursor-default">
+      <div className="w-14 h-14 bg-cyan-400/10 rounded-xl flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black transition-all duration-500 shadow-lg">{icon}</div>
+      <div><h4 className="text-xl font-bold uppercase mb-2 group-hover:text-cyan-400 transition-colors">{title}</h4><p className="text-slate-500 text-sm leading-relaxed max-w-md font-light">{desc}</p></div>
     </motion.div>
   );
 }
 
 function ContactSection() {
   return (
-    <section id="contact" className="container mx-auto px-6 py-40 border-t border-white/5">
-        <div className="bg-white/[0.02] border border-white/10 rounded-[5rem] p-16 md:p-32 relative overflow-hidden shadow-2xl">
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-32">
+    <section id="contact" className="container mx-auto px-6 py-24 border-t border-white/5">
+        <div className="bg-white/[0.02] border border-white/10 rounded-[3rem] p-10 md:p-20 relative overflow-hidden shadow-2xl">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20">
             <div>
-              <h3 className="label-mono text-slate-500 mb-10 uppercase tracking-[0.6em] text-[11px] font-black">İletişime Geçin</h3>
-              <h2 className="text-7xl md:text-9xl font-black text-white uppercase tracking-tighter mb-12 leading-none">PROJENİZİ <br /><span className="text-gradient">ZIRHLAYALIM</span>.</h2>
+              <h3 className="label-mono text-slate-500 mb-6 uppercase tracking-[0.4em] text-[10px] font-black">İletişime Geçin</h3>
+              <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-8 leading-none">PROJENİZİ <br /><span className="text-gradient">ZIRHLAYALIM</span>.</h2>
             </div>
-            <form className="space-y-10" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid md:grid-cols-2 gap-10">
-                <input type="text" placeholder="ADINIZ" className="form-input text-lg p-7" />
-                <input type="email" placeholder="E-POSTA" className="form-input text-lg p-7" />
+            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid md:grid-cols-2 gap-6">
+                <input type="text" placeholder="ADINIZ" className="form-input text-sm p-5" />
+                <input type="email" placeholder="E-POSTA" className="form-input text-sm p-5" />
               </div>
-              <textarea rows={6} placeholder="MESAJINIZ" className="form-input text-lg p-7"></textarea>
-              <button className="w-full bg-white text-black font-black py-8 rounded-3xl hover:bg-cyan-400 transition-all duration-700 uppercase tracking-[0.4em] text-sm flex items-center justify-center gap-5 group">SİNYALİ GÖNDER <Send size={22} className="group-hover:translate-x-3 group-hover:-translate-y-3 transition-transform" /></button>
+              <textarea rows={5} placeholder="MESAJINIZ" className="form-input text-sm p-5"></textarea>
+              <button className="w-full bg-white text-black font-black py-5 rounded-2xl hover:bg-cyan-400 transition-all duration-500 uppercase tracking-[0.3em] text-xs flex items-center justify-center gap-4 group">SİNYALİ GÖNDER <Send size={18} className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" /></button>
             </form>
           </div>
         </div>
