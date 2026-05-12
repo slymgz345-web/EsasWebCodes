@@ -59,6 +59,89 @@ export default function App() {
         </div>
       </section>
 
+      import { motion } from 'framer-motion';
+import { ShieldAlert, Network, ShieldCheck, Cpu } from 'lucide-react';
+
+export default function ApproachSection() {
+  return (
+    <section className="container mx-auto px-6 py-24 border-t border-white/5">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        {/* SOL KOLON: Başlık ve Büyük Kart */}
+        <div className="lg:col-span-5 space-y-12">
+          <div>
+            <span className="label-mono text-slate-500 text-[10px] tracking-[0.3em] uppercase mb-4 block">
+              ÇALIŞMA METODOLOJİM
+            </span>
+            <h2 className="text-6xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter">
+              PROFESYONEL <br />
+              <span className="text-gradient">STANDARTLAR</span>.
+            </h2>
+          </div>
+
+          {/* Sol Büyük Kart */}
+          <motion.div 
+            whileHover={{ y: -5 }}
+            className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12 relative group"
+          >
+            <div className="w-14 h-14 bg-cyan-400/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-8">
+              <ShieldAlert size={28} />
+            </div>
+            <h3 className="text-2xl font-bold uppercase mb-4 tracking-tight">
+              KALİTELİ VE HIZLI ÇÖZÜMLER
+            </h3>
+            <p className="text-slate-400 leading-relaxed text-sm">
+              Her projeye butik bir yaklaşımla yaklaşıyorum. Sadece bir web sitesi değil, markanızı yansıtan dijital bir kimlik inşa ediyoruz.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* SAĞ KOLON: Üçlü Liste Kartları */}
+        <div className="lg:col-span-7 space-y-6">
+          
+          <MethodCard 
+            icon={<Network size={24} />}
+            title="HIZ VE PERFORMANS"
+            desc="Dünya standartlarında, global erişime sahip ve ışık hızında açılan web siteleri."
+          />
+
+          <MethodCard 
+            icon={<ShieldCheck size={24} />}
+            title="KALİTE GARANTİSİ"
+            desc="Geleceğe hazır, hatasız kod yapısı ve modern tasarım standartları."
+          />
+
+          <MethodCard 
+            icon={<Cpu size={24} />}
+            title="ESNEK ALTYAPI"
+            desc="İşletmenizin büyümesine uyum sağlayan, modüler ve geliştirilebilir mimariler."
+          />
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MethodCard({ icon, title, desc }: { icon: any, title: string, desc: string }) {
+  return (
+    <motion.div 
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 flex flex-col md:flex-row md:items-center gap-8 group hover:bg-white/[0.04] transition-all"
+    >
+      <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+        {icon}
+      </div>
+      <div className="flex-1">
+        <h4 className="text-lg font-bold uppercase tracking-tight mb-2">{title}</h4>
+        <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
+      </div>
+    </motion.div>
+  );
+}
+
       {/* --- SERVICES LIST (ICON CARDS) --- */}
       <section className="container mx-auto px-6 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
